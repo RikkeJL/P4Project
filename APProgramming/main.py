@@ -15,7 +15,7 @@ chunk = 1024
 
 wf = wave.open(filename, 'rb')
 
-# delay = np.int(np.round(0.15*wf.getframerate()))
+delay = np.int(np.round(0.15*wf.getframerate()))
 # echo = echoEffect(, 0.5, delay)
 # Create an interface to PortAudio
 p = pyaudio.PyAudio()
@@ -35,6 +35,9 @@ data = wf.readframes(chunk)
 while data != '':
     stream.write(data)
     data = wf.readframes(chunk)
+    newdata = np.frombuffer(data, dtype=np.float32)
+    echo = echoEffect(newdata, 0.5, delay)
+    stream.write(echo)
 
 # Close and terminate the stream
 stream.close()
