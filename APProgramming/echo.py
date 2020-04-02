@@ -9,5 +9,5 @@ def echoEffect(inputSignal, filterCoef, delay):
         if n < delay:
             outputSignal[n] = inputSignal[n]
         else:
-            outputSignal[n] = inputSignal[n] + filterCoef * outputSignal[n - delay]
+            outputSignal[n] = inputSignal[n] + filterCoef * inputSignal[n - delay]
     return outputSignal
