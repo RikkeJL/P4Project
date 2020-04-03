@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 from frequencyChange import*
+=======
+>>>>>>> Stashed changes
 from echo import*
 from chorus import*
 from vibrato import*
@@ -28,6 +31,7 @@ stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
                 output=True)
 
 
+<<<<<<< Updated upstream
 # Read data in chunks
 data = wf.readframes(chunk)
 
@@ -39,3 +43,22 @@ while data != '':
 # Close and terminate the stream
 stream.close()
 p.terminate()
+=======
+# Returns the sampling frequency as well as the raw data from the WAV file
+sf, soundInput = wave.read('test3.wav')
+
+# Normalises the value by ?????
+soundInput = soundInput[:,0]/2**15
+
+# Calculates the delay
+delay = np.int(np.round(0.15*sf))
+
+# applies the echo filter to the input
+echo = echoEffect(soundInput, 10, delay)
+
+# Plays the melody based on the raw data and the sampling frequency.
+sd.play(echo, sf)
+
+# Makes sure to not stop the melody before everything has played through.
+status = sd.wait()
+>>>>>>> Stashed changes

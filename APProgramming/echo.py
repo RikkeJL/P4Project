@@ -1,5 +1,4 @@
 import numpy as np
-import wave
 
 
 def echoEffect(inputSignal, filterCoef, delay):
