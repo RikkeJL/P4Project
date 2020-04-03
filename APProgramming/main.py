@@ -1,9 +1,9 @@
-from vibrato import*
 import sounddevice as sd
-import scipy.io.wavfile as wave
+from echo import*
+from vibrato import*
+import scipy.io.wavfile as waves
 
-# Returns the sampling frequency as well as the raw data from the WAV file
-sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
+sf, soundInput = wave.read('test3.wav')
 
 # Normalises the value by ?????
 soundInput = soundInput[:]/2**15
