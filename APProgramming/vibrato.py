@@ -17,4 +17,5 @@ def addVibrato(inputSignal, modDepth, digModFreq, offset=0):
             fractionalDelay = delay-intDelay
             apParameter = (1-fractionalDelay)/(1+fractionalDelay)
             outputSignal[n] = apParameter*tmpSignal[n]+tmpSignal[n-1]-apParameter*outputSignal[n-1]
+    print("Vibrato Done!")
     return outputSignal
