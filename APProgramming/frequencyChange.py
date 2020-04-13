@@ -28,4 +28,5 @@ def resampleFreq(data):
     pitchedData = np.fft.irfft(pitchedData)
 
     # returns the data
+    print("Frequency Change Done!")
     return pitchedData
