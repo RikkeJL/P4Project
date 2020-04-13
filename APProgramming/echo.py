@@ -1,7 +1,7 @@
 import numpy as np
 
-
-def echoEffect(inputSignal, filterCoef, delay):
+def echoEffect(inputSignal, filterCoef, samplingFreq):
+    delay = np.int(np.round(0.15 * samplingFreq))
     nData = np.size(inputSignal)
     outputSignal = np.zeros(nData)
     for n in np.arange(nData):

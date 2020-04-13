@@ -14,18 +14,18 @@ echo = echoEffect(soundInput, 0.5, sf)
 
 # ------------ CALCULATIONS FOR VIBRATO ------------ #
 
-vibrato = addVibrato(soundInput, sf)
+# vibrato = addVibrato(soundInput, sf)
 
 # ------------ CALCULATIONS FOR CHORUS ------------ #
 
-chorus = chorusEffect(soundInput, sf)
+# chorus = chorusEffect(soundInput, sf)
 
 # counter = np.int(input("Please enter an integer from 0-4: "))
 
 # if counter == 1:
-# sd.play(echo, sf)
+sd.play(echo, sf)
 # elif counter == 2:
-sd.play(vibrato, sf)
+# sd.play(vibrato, sf)
 # elif counter == 3:
 # sd.play(chorus, sf)
 # else:
