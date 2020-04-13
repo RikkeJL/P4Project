@@ -1,10 +1,15 @@
 import sounddevice as sd
 from echo import*
 from vibrato import*
-import scipy.io.wavfile as waves
+from frequencyChange import*
+import scipy.io.wavfile as wave
 
-sf, soundInput = wave.read('test3.wav')
+sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
+# ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
+soundInput = resampleFreq(soundInput)
+
+#--------------NORMALISATION OF INPUT--------------------#
 # Normalises the value by ?????
 soundInput = soundInput[:]/2**15
 
@@ -16,13 +21,12 @@ soundInput = soundInput[:]/2**15
 # echo = echoEffect(soundInput, 10, delay)
 
 # ------------ CALCULATIONS FOR VIBRATO ------------ #
-maxDelay = 0.005*sf  # samples
-digModFreq = 2*np.pi*5/sf  # rad/sample
-vibrato = addVibrato(soundInput, maxDelay, digModFreq)
+#maxDelay = 0.005*sf  # samples
+#digModFreq = 2*np.pi*5/sf  # rad/sample
+#vibrato = addVibrato(soundInput, maxDelay, digModFreq)
 
 # Plays the melody based on the raw data and the sampling frequency.
-sd.play(vibrato, sf)
+sd.play(soundInput, sf)
 
 # Makes sure to not stop the melody before everything has played through.
 status = sd.wait()
-
