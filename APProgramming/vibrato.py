@@ -1,7 +1,9 @@
 import numpy as np
 
 
-def addVibrato(inputSignal, modDepth, digModFreq, offset=0):
+def addVibrato(inputSignal, sf, offset=0):
+    modDepth = 0.05 * sf  # samples
+    digModFreq = 2 * np.pi * 5 / sf  # rad/sample
     nData = np.size(inputSignal)
     outputSignal = np.zeros(nData)
     tmpSignal = np.zeros(nData)

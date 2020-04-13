@@ -3,34 +3,34 @@ from echo import*
 from chorus import*
 import scipy.io.wavfile as wave
 
-sf, soundInput = wave.read('test3.wav')
+# Gets the sampling frequency of the sound, as well as all the raw data from the sound, and saves it as a numpy array.
+sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
-# Normalises the value by ?????
-soundInput = soundInput[:, 0]/2**15
+# Normalises the values in the array
+soundInput = soundInput[:]/2**15
 
 # ------------ CALCULATIONS FOR ECHO ------------ #
-# Calculates the delay
-# delay = np.int(np.round(0.15*sf))
-
-# applies the echo filter to the input
-echo = echoEffect(soundInput, 10, sf)
+echo = echoEffect(soundInput, 0.5, sf)
 
 # ------------ CALCULATIONS FOR VIBRATO ------------ #
-maxDelay = 0.005*sf  # samples
-digModFreq = 2*np.pi*5/sf  # rad/sample
-vibrato = addVibrato(soundInput, maxDelay, digModFreq)
+
+vibrato = addVibrato(soundInput, sf)
 
 # ------------ CALCULATIONS FOR CHORUS ------------ #
-mixParam = np.array([0.9, 0.9, 0.8])
-offset = np.array([0.01, 0.012, 0.008])*sf  # samples
-digModFreq = 2*np.pi*np.array([0.1, 0.15, 0.05])/sf  # radians/sample
-modDepth = np.array([0.02, 0.021, 0.018])*sf  # samples
-chorus = chorusEffect(soundInput, mixParam, offset, digModFreq, modDepth)
 
+chorus = chorusEffect(soundInput, sf)
 
-# Plays the melody based on the raw data and the sampling frequency.
+# counter = np.int(input("Please enter an integer from 0-4: "))
+
+# if counter == 1:
+# sd.play(echo, sf)
+# elif counter == 2:
+sd.play(vibrato, sf)
+# elif counter == 3:
 # sd.play(chorus, sf)
+# else:
+# sd.play(soundInput)
 
 # Makes sure to not stop the melody before everything has played through.
-# status = sd.wait()
+status = sd.wait()
 
