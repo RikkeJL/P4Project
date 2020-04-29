@@ -7,7 +7,7 @@ import scipy.io.wavfile as wave
 sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
-soundInput = resampleFreq(soundInput)
+soundInput = resampleFreq(soundInput, 0.5)
 
 #--------------NORMALISATION OF INPUT--------------------#
 # Normalises the value by ?????
