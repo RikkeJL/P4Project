@@ -9,7 +9,7 @@ from chorus import*
 sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
-freq = resampleFreq(soundInput, 0.5)
+freq = resampleFreq(soundInput)
 
 # ----------- NORMALISATION ------------ #
 soundInput = soundInput[:]/2**15
@@ -32,6 +32,8 @@ print("Done Processing")
 # sd.play(vibrato, sf)
 # elif counter == 3:
 # sd.play(chorus, sf)
+# elif counter == 4:
+# sd.play(freq, sf)
 # else:
 # sd.play(soundInput)
 

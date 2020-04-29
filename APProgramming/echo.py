@@ -6,6 +6,7 @@ def echoEffect(inputSignal, filterCoef, samplingFreq):
     nData = np.size(inputSignal)
     outputSignal = np.zeros(nData)
     for n in np.arange(nData):
+        print(n)
         if n < delay:
             outputSignal[n] = inputSignal[n]
         else:
