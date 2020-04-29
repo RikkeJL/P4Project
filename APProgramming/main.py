@@ -1,32 +1,39 @@
 import sounddevice as sd
+import scipy.io.wavfile as wave
 from echo import*
 from vibrato import*
 from frequencyChange import*
-import scipy.io.wavfile as wave
+from chorus import*
+
 
 sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
-soundInput = resampleFreq(soundInput, 0.5)
+freq = resampleFreq(soundInput)
 
-#--------------NORMALISATION OF INPUT--------------------#
-# Normalises the value by ?????
+# ----------- NORMALISATION ------------ #
 soundInput = soundInput[:]/2**15
 
 # ------------ CALCULATIONS FOR ECHO ------------ #
-# Calculates the delay
-# delay = np.int(np.round(0.15*sf))
-
-# applies the echo filter to the input
-# echo = echoEffect(soundInput, 10, delay)
+echo = echoEffect(soundInput, 0.5, sf)
 
 # ------------ CALCULATIONS FOR VIBRATO ------------ #
-#maxDelay = 0.005*sf  # samples
-#digModFreq = 2*np.pi*5/sf  # rad/sample
-#vibrato = addVibrato(soundInput, maxDelay, digModFreq)
+vibrato = addVibrato(soundInput, sf)
 
-# Plays the melody based on the raw data and the sampling frequency.
-sd.play(soundInput, sf)
+# ------------ CALCULATIONS FOR CHORUS ------------ #
+chorus = chorusEffect(soundInput, sf)
+
+print("Done Processing")
+# counter = np.int(input("Please enter an integer from 0-4: "))
+
+# if counter == 1:
+# sd.play(echo, sf)
+# elif counter == 2:
+# sd.play(vibrato, sf)
+# elif counter == 3:
+# sd.play(chorus, sf)
+# else:
+# sd.play(soundInput)
 
 # Makes sure to not stop the melody before everything has played through.
-status = sd.wait()
+# status = sd.wait()
