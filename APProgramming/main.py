@@ -9,7 +9,7 @@ from chorus import*
 sf, soundInput = wave.read('A_Light_Breeze_from_South_West.wav')
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
-freq = resampleFreq(soundInput)
+freq = resampleFreq(soundInput, 0.5)
 
 # ----------- NORMALISATION ------------ #
 soundInput = soundInput[:]/2**15
