@@ -10,5 +10,4 @@ def echoEffect(inputSignal, filterCoef, samplingFreq):
             outputSignal[n] = inputSignal[n]
         else:
             outputSignal[n] = inputSignal[n] + filterCoef * outputSignal[n - delay]
-    print("Echo Done!")
     return outputSignal

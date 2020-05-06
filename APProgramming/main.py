@@ -6,13 +6,8 @@ from SoundEffects.frequencyChange import*
 from SoundEffects.chorus import*
 from graphMethod import*
 
-length = np.size(outData)
-time = np.arange(0, length)
-
-stream = openOutputStream()
-
-with stream:
-    stream.read()
+# length = np.size(outData)
+# time = np.arange(0, length)
 
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
