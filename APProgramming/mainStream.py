@@ -7,7 +7,7 @@ from SoundEffects.chorus import *
 
 CHUNK = 1024
 
-soundFile = wave.open('A_Light_Breeze_from_South_West.wav', 'rb')
+soundFile = wave.open('test3.wav', 'rb')
 
 p = pa.PyAudio()
 
@@ -17,6 +17,7 @@ stream = p.open(format=p.get_format_from_width(soundFile.getsampwidth()),
                 output=True)
 
 data = soundFile.readframes(CHUNK)
+
 
 while len(data) > 0:
     stream.write(data)
