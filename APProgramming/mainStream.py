@@ -18,11 +18,10 @@ soundFile = wave.open('test3.wav', 'rb')
 
 #data = soundFile.readframes(CHUNK)
 
-
-#while len(data) > 0:
-#    stream.write(data)
-#    data = soundFile.readframes(CHUNK)
-
+while len(data) > 0:
+    stream.write(data)
+    data = soundFile.readframes(CHUNK)
+    
 #stream.stop_stream()
 #stream.close()
 #soundFile.close()
