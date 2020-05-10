@@ -18,7 +18,6 @@ stream = p.open(format=p.get_format_from_width(soundFile.getsampwidth()),
 
 data = soundFile.readframes(CHUNK)
 
-
 while len(data) > 0:
     stream.write(data)
     data = soundFile.readframes(CHUNK)
