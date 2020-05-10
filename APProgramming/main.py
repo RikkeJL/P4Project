@@ -1,41 +1,44 @@
-from frequencyChange import*
-from echo import*
-from chorus import*
-from vibrato import*
-import pyaudio
-import wave as wv
-import scipy.io.wavfile as waves
+import sys
+from mainStream import*
+from SoundEffects.echo import*
+from SoundEffects.vibrato import*
+from SoundEffects.frequencyChange import*
+from SoundEffects.chorus import*
+from graphMethod import*
 
-filename = 'A_Light_Breeze_from_South_West.wav'
-
-# Set chunk size of 1024 samples per data frame
-chunk = 1024
-
-# Open the sound file
-
-wf = wave.open(filename, 'rb')
-
-# delay = np.int(np.round(0.15*wf.getframerate()))
-# echo = echoEffect(, 0.5, delay)
-# Create an interface to PortAudio
-p = pyaudio.PyAudio()
-
-# Open a .Stream object to write the WAV file to
-# 'output = True' indicates that the sound will be played rather than recorded
-stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                channels=wf.getnchannels(),
-                rate=wf.getframerate(),
-                output=True)
+# length = np.size(outData)
+# time = np.arange(0, length)
 
 
-# Read data in chunks
-data = wf.readframes(chunk)
+# ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
+# freq = resampleFreq(soundInput, 2)
 
-# Play the sound by writing the audio data to the stream
-while data != '':
-    stream.write(data)
-    data = wf.readframes(chunk)
+# plotGraph(freq, time)
 
-# Close and terminate the stream
-stream.close()
-p.terminate()
+# ----------- NORMALISATION ------------ #
+# soundInput = soundInput[:]/2**15
+
+# ------------ CALCULATIONS FOR ECHO ------------ #
+# echo = echoEffect(soundInput, 0.5, sf)
+
+# ------------ CALCULATIONS FOR VIBRATO ------------ #
+# vibrato = addVibrato(soundInput, sf)
+# plotGraph(soundInput, vibrato, time)
+# ------------ CALCULATIONS FOR CHORUS ------------ #
+# chorus = chorusEffect(soundInput, sf)
+
+# counter = np.int(input("Please enter an integer from 0-4: "))
+
+# if counter == 1:
+# sd.play(echo, sf)
+# elif counter == 2:
+# sd.play(vibrato, sf)
+# elif counter == 3:
+# sd.play(chorus, sf)
+# elif counter == 4:
+# sd.play(freq, sf)
+# else:
+# sd.play(soundInput, sf)
+
+# Makes sure to not stop the melody before everything has played through.
+# status = sd.wait()
