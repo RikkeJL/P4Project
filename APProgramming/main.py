@@ -5,7 +5,8 @@ from SoundEffects.vibrato import*
 from SoundEffects.frequencyChange import*
 from SoundEffects.chorus import*
 from graphMethod import*
-
+from UserInput.UseData import*
+from UserInput.ArduinoRead import*
 # length = np.size(outData)
 # time = np.arange(0, length)
 
@@ -42,3 +43,4 @@ from graphMethod import*
 
 # Makes sure to not stop the melody before everything has played through.
 # status = sd.wait()
+readInput()

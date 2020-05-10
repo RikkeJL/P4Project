@@ -6,5 +6,3 @@ def resampleFreq(data, factor):
     freqchange = freqchange[freqchange < len(data)]
     print("Frequency Change Done!")
     return data[freqchange.astype(int)]
-
-
