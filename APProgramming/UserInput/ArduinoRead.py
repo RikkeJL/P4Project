@@ -3,11 +3,12 @@ from UserInput.UseData import *
 import serial
 import time
 
+statelock = -1
+
 def readInput():
     ser = serial.Serial('COM3', 9600)
     state = 0
-    errrorhandler = True
-
+    lastvalueID = -1
 
     while True:
         incomingbytes = ser.readline()
@@ -16,17 +17,17 @@ def readInput():
         print(incomingbytes)
 
         if incomingbytes.find('S') != -1:
-            while errrorhandler:
                 print("S value found!")
                 incomingbytes = incomingbytes.translate({ord('S'): None})
-                incomingstate = incomingbytes
-                state = int(incomingstate)
-                print("S value is: ", state)
-                errrorhandler = False
+                incomingstate = int(incomingbytes)
+                if state == incomingstate:
+                    state = int(incomingstate)
+                    print("S value is: ", state)
+                statelock = state
 
         if incomingbytes.find('F') != -1:
             print("F value found!")
             incomingbytes = incomingbytes.translate({ord('F'): None})
             print("F value is: ", incomingbytes)
             sensorvalue = float(incomingbytes)
-            soundEffect(sensorvalue, state)
+            lastvalueID = soundEffect(lastvalueID, sensorvalue, state)

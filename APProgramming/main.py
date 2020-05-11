@@ -7,24 +7,13 @@ from UserInput.UseData import*
 from UserInput.ArduinoRead import*
 import sounddevice as sd
 import scipy.io.wavfile as wave
+import numpy as np
 
 
-# length = np.size(outData)
-# time = np.arange(0, length)
 
-#sf, soundInput = wave.read("test3.wav")
-
-
-# ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
-# freq = resampleFreq(soundInput, 2)
-
-# plotGraph(freq, time)
 
 # ----------- NORMALISATION ------------ #
 #soundInput = soundInput[:, 0]/2**15
-
-#length = np.size(soundInput)
-#time = np.arange(0, length)
 
 # ------------ CALCULATIONS FOR ECHO ------------ #
 # echo = echoEffect(soundInput, 0.5, sf)
