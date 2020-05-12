@@ -1,7 +1,12 @@
+from SoundEffects.echo import *
+from SoundEffects.vibrato import *
+from SoundEffects.frequencyChange import *
+from SoundEffects.chorus import *
 
+import scipy.io.wavfile as wave
+import sounddevice as sd
+import numpy as np
 
-<<<<<<< Updated upstream
-=======
 sf, soundInput = wave.read("A Light Breeze from South West Redux.wav")
 length = np.size(soundInput)
 time = np.arange(0, length)
@@ -140,4 +145,4 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
                 lastValueID = 16
 
     return lastValueID
->>>>>>> Stashed changes
+
