@@ -70,80 +70,79 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
             lastValueID = 0
 
     if state == 1:
-        if 0 <= sensorvalue <= 0.875:
+        if 0 <= sensorvalue <= 409.6:
             if lastValueID != 1:
                 sd.play(freqSmall, sf)
                 lastValueID = 1
-
-        elif 0.875 < sensorvalue <= 1.75:
+        elif 409.6 < sensorvalue <= 614.4:
             if lastValueID != 2:
                 sd.play(freqMed, sf)
                 lastValueID = 2
-        elif 1.75 < sensorvalue <= 2.625:
+        elif 614.4 < sensorvalue <= 819.1:
             if lastValueID != 3:
                 sd.play(freqHigh, sf)
                 lastValueID = 3
-        elif 2.625 < sensorvalue:
+        elif 819.1 < sensorvalue:
             if lastValueID != 4:
                 sd.play(freqReallyHigh, sf)
                 lastValueID = 4
 
     if state == 2:
-        if 0 <= sensorvalue <= 0.875:
+        if 0 <= sensorvalue <= 409.6:
             if lastValueID != 5:
                 sd.play(echoSmall, sf)
                 lastValueID = 5
-        elif 0.875 < sensorvalue <= 1.75:
+        elif 409.6 < sensorvalue <= 614.4:
             if lastValueID != 6:
                 sd.play(echoMed, sf)
                 lastValueID = 6
-        elif 1.75 < sensorvalue <= 2.625:
+        elif 614.4 < sensorvalue <= 819.1:
             if lastValueID != 7:
                 sd.play(echoHigh, sf)
                 lastValueID = 7
-        elif 2.625 < sensorvalue:
+        elif 819.1 < sensorvalue:
             if lastValueID != 8:
                 sd.play(echoReallyHigh, sf)
                 lastValueID = 8
 
     if state == 3:
-        if 0 <= sensorvalue <= 0.875:
+        if 0 <= sensorvalue <= 409.6:
             if lastValueID != 9:
                 sd.play(vibratoSmall, sf)
                 lastValueID = 9
 
-        elif 0.875 < sensorvalue <= 1.75:
+        elif 409.6 < sensorvalue <= 614.4:
             if lastValueID != 10:
                 sd.play(vibratoMed, sf)
                 lastValueID = 10
 
-        elif 1.75 < sensorvalue <= 2.625:
+        elif 614.4 < sensorvalue <= 819.1:
             if lastValueID != 11:
                 sd.play(vibratoHigh, sf)
                 lastValueID = 11
 
-        elif 2.625 < sensorvalue:
+        elif 819.1 < sensorvalue:
             if lastValueID != 12:
                 sd.play(vibratoReallyHigh, sf)
                 lastValueID = 12
 
     if state == 4:
-        if 0 <= sensorvalue <= 0.875:
+        if 0 <= sensorvalue <= 409.6:
             if lastValueID != 13:
                 sd.play(chorusSmall, sf)
                 lastValueID = 13
 
-        elif 0.875 < sensorvalue <= 1.75:
+        elif 409.6 < sensorvalue <= 614.4:
             if lastValueID != 14:
                 sd.play(chorusMed, sf)
                 lastValueID = 14
 
-        elif 1.75 < sensorvalue <= 2.625:
+        elif 614.4 < sensorvalue <= 819.1:
             if lastValueID != 15:
                 sd.play(chorusHigh, sf)
                 lastValueID = 15
 
-        elif 2.625 < sensorvalue:
+        elif 819.1 < sensorvalue:
             if lastValueID != 16:
                 sd.play(chorusReallyHigh, sf)
                 lastValueID = 16
