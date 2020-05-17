@@ -1,8 +1,8 @@
 import numpy as np
 
 
-def addVibratoToChorus(inputSignal, sf, digModFreq, offset):
-    modDepth = 0.05 * sf  # samples
+def addVibratoToChorus(inputSignal, sf, digModFreq, changeVal, offset):
+    modDepth = changeVal * sf  # samples
     nData = np.size(inputSignal)
     outputSignal = np.zeros(nData)
     tmpSignal = np.zeros(nData)
@@ -21,7 +21,7 @@ def addVibratoToChorus(inputSignal, sf, digModFreq, offset):
     return outputSignal
 
 
-def chorusEffect(inputSignal, sf):
+def chorusEffect(inputSignal, changeVal, sf):
     mixParam = np.array([0.9, 0.9, 0.8])
     offset = np.array([0.1, 0.12, 0.08])*sf  # samples
     digModFreq = 2*np.pi*np.array([0.1, 0.15, 0.05])/sf  # radians/sample
@@ -32,6 +32,6 @@ def chorusEffect(inputSignal, sf):
     nAdditionInstruments = np.size(mixParam)
     for ii in np.arange(nAdditionInstruments):
         outputSignal = outputSignal+mixParam[ii]*addVibratoToChorus(inputSignal,
-                                                                    modDepth[ii], digModFreq[ii], offset[ii])
+                                                                    modDepth[ii], changeVal, digModFreq[ii], offset[ii])
     print("Chorus Done!")
     return outputSignal

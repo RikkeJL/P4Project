@@ -21,6 +21,7 @@ def readInput():
                 incomingstate = int(incomingbytes)
                 if state == incomingstate:
                     state = int(incomingstate)
+
                 statelock = state
 
         if incomingbytes.find('F') != -1:
