@@ -2,6 +2,7 @@ from SoundEffects.echo import *
 from SoundEffects.vibrato import *
 from SoundEffects.frequencyChange import *
 from SoundEffects.chorus import *
+from graphMethod import *
 
 import scipy.io.wavfile as wave
 import sounddevice as sd
@@ -20,7 +21,7 @@ freqHigh = resampleFreq(soundInput, 10)
 print("Freq high")
 freqReallyHigh = resampleFreq(soundInput, 15)
 print("Freq very high")
-# plotGraph(freq, time)
+
 
 # ----------- NORMALISATION ------------ #
 soundInput = soundInput[:] / 2 ** 15
@@ -68,20 +69,27 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
         if lastValueID != 0:
             sd.play(soundInput, sf)
             lastValueID = 0
+            plotGraph(soundInput, soundInput, time)
 
     if state == 1:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 1:
                 sd.play(freqSmall, sf)
                 lastValueID = 1
+                plotGraph(soundInput, freqSmall, time)
+
         elif 1 < sensorvalue <= 2:
             if lastValueID != 2:
                 sd.play(freqMed, sf)
                 lastValueID = 2
+                plotGraph(soundInput, freqMed, time)
+
         elif 2 < sensorvalue <= 3:
             if lastValueID != 3:
                 sd.play(freqHigh, sf)
                 lastValueID = 3
+                plotGraph(soundInput, freqHigh, time)
+
         elif 3 < sensorvalue:
             if lastValueID != 4:
                 sd.play(freqReallyHigh, sf)
@@ -92,59 +100,74 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
             if lastValueID != 5:
                 sd.play(echoSmall, sf)
                 lastValueID = 5
+                plotGraph(soundInput, echoSmall, time)
+
         elif 1 < sensorvalue <= 2:
             if lastValueID != 6:
                 sd.play(echoMed, sf)
                 lastValueID = 6
+                plotGraph(soundInput, echoMed, time)
+
         elif 2 < sensorvalue <= 3:
             if lastValueID != 7:
                 sd.play(echoHigh, sf)
                 lastValueID = 7
+                plotGraph(soundInput, echoHigh, time)
+
         elif 3 < sensorvalue:
             if lastValueID != 8:
                 sd.play(echoReallyHigh, sf)
                 lastValueID = 8
+                plotGraph(soundInput, echoReallyHigh, time)
 
     if state == 3:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 9:
                 sd.play(vibratoSmall, sf)
                 lastValueID = 9
+                plotGraph(soundInput, vibratoSmall, time)
 
         elif 1 < sensorvalue <= 2:
             if lastValueID != 10:
                 sd.play(vibratoMed, sf)
                 lastValueID = 10
+                plotGraph(soundInput, vibratoMed, time)
 
         elif 2 < sensorvalue <= 3:
             if lastValueID != 11:
                 sd.play(vibratoHigh, sf)
                 lastValueID = 11
+                plotGraph(soundInput, vibratoHigh, time)
 
         elif 3 < sensorvalue:
             if lastValueID != 12:
                 sd.play(vibratoReallyHigh, sf)
                 lastValueID = 12
+                plotGraph(soundInput, vibratoReallyHigh, time)
 
     if state == 4:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 13:
                 sd.play(chorusSmall, sf)
                 lastValueID = 13
+                plotGraph(soundInput, chorusSmall, time)
 
         elif 1 < sensorvalue <= 2:
             if lastValueID != 14:
                 sd.play(chorusMed, sf)
                 lastValueID = 14
+                plotGraph(soundInput, chorusMed, time)
 
         elif 2 < sensorvalue <= 3:
             if lastValueID != 15:
                 sd.play(chorusHigh, sf)
                 lastValueID = 15
+                plotGraph(soundInput, chorusHigh, time)
 
         elif 3 < sensorvalue:
             if lastValueID != 16:
                 sd.play(chorusReallyHigh, sf)
                 lastValueID = 16
+                plotGraph(soundInput, chorusReallyHigh, time)
 
     return lastValueID

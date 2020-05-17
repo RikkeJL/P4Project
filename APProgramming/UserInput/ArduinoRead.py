@@ -19,9 +19,8 @@ def readInput():
         if incomingbytes.find('S') != -1:
                 incomingbytes = incomingbytes.translate({ord('S'): None})
                 incomingstate = int(incomingbytes)
-                if state == incomingstate:
+                if state != incomingstate:
                     state = int(incomingstate)
-                statelock = state
 
         if incomingbytes.find('F') != -1:
             incomingbytes = incomingbytes.translate({ord('F'): None})
