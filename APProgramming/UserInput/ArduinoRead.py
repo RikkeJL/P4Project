@@ -1,7 +1,5 @@
-from UserInput.UseData import *
-
 import serial
-import time
+from UserInput.UseData import *
 
 statelock = -1
 
