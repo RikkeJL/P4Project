@@ -2,6 +2,7 @@ from SoundEffects.echo import *
 from SoundEffects.vibrato import *
 from SoundEffects.frequencyChange import *
 from SoundEffects.chorus import *
+from UserInput.CollectData import *
 
 import scipy.io.wavfile as wave
 import sounddevice as sd
@@ -10,6 +11,7 @@ import numpy as np
 sf, soundInput = wave.read("A Light Breeze from South West Redux.wav")
 length = np.size(soundInput)
 time = np.arange(0, length)
+
 
 # ----------- CALCULATIONS FOR FREQUENCY CHANGE ---------#
 freqSmall = resampleFreq(soundInput, 2)
@@ -68,83 +70,103 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
         if lastValueID != 0:
             sd.play(soundInput, sf)
             lastValueID = 0
+        write_to_sheet()
 
     if state == 1:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 1:
                 sd.play(freqSmall, sf)
                 lastValueID = 1
+                data_storage.append(lastValueID)
+
         elif 1 < sensorvalue <= 2:
             if lastValueID != 2:
                 sd.play(freqMed, sf)
                 lastValueID = 2
+                data_storage.append(lastValueID)
+
         elif 2 < sensorvalue <= 3:
             if lastValueID != 3:
                 sd.play(freqHigh, sf)
                 lastValueID = 3
+                data_storage.append(lastValueID)
+
         elif 3 < sensorvalue:
             if lastValueID != 4:
                 sd.play(freqReallyHigh, sf)
                 lastValueID = 4
+                data_storage.append(lastValueID)
 
     if state == 2:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 5:
                 sd.play(echoSmall, sf)
                 lastValueID = 5
+                data_storage1.append(lastValueID)
         elif 1 < sensorvalue <= 2:
             if lastValueID != 6:
                 sd.play(echoMed, sf)
                 lastValueID = 6
+                data_storage1.append(lastValueID)
         elif 2 < sensorvalue <= 3:
             if lastValueID != 7:
                 sd.play(echoHigh, sf)
                 lastValueID = 7
+                data_storage1.append(lastValueID)
         elif 3 < sensorvalue:
             if lastValueID != 8:
                 sd.play(echoReallyHigh, sf)
                 lastValueID = 8
+                data_storage1.append(lastValueID)
 
     if state == 3:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 9:
                 sd.play(vibratoSmall, sf)
                 lastValueID = 9
+                data_storage2.append(lastValueID)
 
         elif 1 < sensorvalue <= 2:
             if lastValueID != 10:
                 sd.play(vibratoMed, sf)
                 lastValueID = 10
+                data_storage2.append(lastValueID)
 
         elif 2 < sensorvalue <= 3:
             if lastValueID != 11:
                 sd.play(vibratoHigh, sf)
                 lastValueID = 11
+                data_storage2.append(lastValueID)
 
         elif 3 < sensorvalue:
             if lastValueID != 12:
                 sd.play(vibratoReallyHigh, sf)
                 lastValueID = 12
+                data_storage2.append(lastValueID)
 
     if state == 4:
         if 0 <= sensorvalue <= 1:
             if lastValueID != 13:
                 sd.play(chorusSmall, sf)
                 lastValueID = 13
+                data_storage3.append(lastValueID)
 
         elif 1 < sensorvalue <= 2:
             if lastValueID != 14:
                 sd.play(chorusMed, sf)
                 lastValueID = 14
+                data_storage3.append(lastValueID)
 
         elif 2 < sensorvalue <= 3:
             if lastValueID != 15:
                 sd.play(chorusHigh, sf)
                 lastValueID = 15
+                data_storage3.append(lastValueID)
 
         elif 3 < sensorvalue:
             if lastValueID != 16:
                 sd.play(chorusReallyHigh, sf)
                 lastValueID = 16
+                data_storage3.append(lastValueID)
 
     return lastValueID

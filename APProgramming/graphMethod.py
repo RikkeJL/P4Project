@@ -1,4 +1,5 @@
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
 
 def plotGraph(soundwave, soundwave2, time):
     plt.figure(figsize=(12, 5))
