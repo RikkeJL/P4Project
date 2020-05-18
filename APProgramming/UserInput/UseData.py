@@ -22,6 +22,15 @@ print("Freq high")
 freqReallyHigh = resampleFreq(soundInput, 15)
 print("Freq very high")
 
+lengthFreqSmall = np.size(freqSmall)
+lengthFreqMed = np.size(freqMed)
+lengthFreqHigh = np.size(freqHigh)
+lengthFreqRHigh = np.size(freqReallyHigh)
+
+timeFreqSmall = np.arange(0, lengthFreqSmall)
+timeFreqMed = np.arange(0, lengthFreqMed)
+timeFreqHigh = np.arange(0, lengthFreqHigh)
+timeFreqRHigh = np.arange(0, lengthFreqRHigh)
 
 # ----------- NORMALISATION ------------ #
 soundInput = soundInput[:] / 2 ** 15
@@ -76,24 +85,25 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
             if lastValueID != 1:
                 sd.play(freqSmall, sf)
                 lastValueID = 1
-                plotGraph(soundInput, freqSmall, time)
+                plotGraph(freqSmall, freqSmall, timeFreqSmall)
 
         elif 1 < sensorvalue <= 2:
             if lastValueID != 2:
                 sd.play(freqMed, sf)
                 lastValueID = 2
-                plotGraph(soundInput, freqMed, time)
+                plotGraph(freqMed, freqMed, timeFreqMed)
 
         elif 2 < sensorvalue <= 3:
             if lastValueID != 3:
                 sd.play(freqHigh, sf)
                 lastValueID = 3
-                plotGraph(soundInput, freqHigh, time)
+                plotGraph(freqHigh, freqHigh, timeFreqHigh)
 
         elif 3 < sensorvalue:
             if lastValueID != 4:
                 sd.play(freqReallyHigh, sf)
                 lastValueID = 4
+                plotGraph(freqReallyHigh, freqReallyHigh, timeFreqRHigh)
 
     if state == 2:
         if 0 <= sensorvalue <= 1:
