@@ -75,7 +75,7 @@ print("chorus very high")
 print("Done Processing")
 
 
-def soundEffect(lastValueID, sensorvalue=0, state=0):
+def soundEffect(lastValueID, sensorvalue, state):
 
     if state == 0:
         if lastValueID != 0:
@@ -90,13 +90,13 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
                 lastValueID = 1
                 data_storage.append(lastValueID)
 
-        elif 1 < sensorvalue <= 2:
+        elif sensorvalue == 2:
             if lastValueID != 2:
                 sd.play(freqMed, sf)
                 lastValueID = 2
                 data_storage.append(lastValueID)
 
-        elif 2 < sensorvalue <= 3:
+        elif sensorvalue == 3:
             if lastValueID != 3:
                 sd.play(freqHigh, sf)
                 lastValueID = 3
@@ -114,12 +114,12 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
                 sd.play(echoSmall, sf)
                 lastValueID = 5
                 data_storage1.append(lastValueID)
-        elif 1 < sensorvalue <= 2:
+        elif sensorvalue == 2:
             if lastValueID != 6:
                 sd.play(echoMed, sf)
                 lastValueID = 6
                 data_storage1.append(lastValueID)
-        elif 2 < sensorvalue <= 3:
+        elif sensorvalue == 3:
             if lastValueID != 7:
                 sd.play(echoHigh, sf)
                 lastValueID = 7
@@ -137,13 +137,13 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
                 lastValueID = 9
                 data_storage2.append(lastValueID)
 
-        elif 1 < sensorvalue <= 2:
+        elif sensorvalue == 2:
             if lastValueID != 10:
                 sd.play(vibratoMed, sf)
                 lastValueID = 10
                 data_storage2.append(lastValueID)
 
-        elif 2 < sensorvalue <= 3:
+        elif sensorvalue == 3:
             if lastValueID != 11:
                 sd.play(vibratoHigh, sf)
                 lastValueID = 11
@@ -162,13 +162,13 @@ def soundEffect(lastValueID, sensorvalue=0, state=0):
                 lastValueID = 13
                 data_storage3.append(lastValueID)
 
-        elif 1 < sensorvalue <= 2:
+        elif sensorvalue == 2:
             if lastValueID != 14:
                 sd.play(chorusMed, sf)
                 lastValueID = 14
                 data_storage3.append(lastValueID)
 
-        elif 2 < sensorvalue <= 3:
+        elif sensorvalue == 3:
             if lastValueID != 15:
                 sd.play(chorusHigh, sf)
                 lastValueID = 15

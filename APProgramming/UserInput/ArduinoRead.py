@@ -1,8 +1,6 @@
 import serial
 from UserInput.UseData import *
 
-statelock = -1
-
 def readInput():
     ser = serial.Serial('COM4', 9600)
     state = 0
@@ -18,9 +16,9 @@ def readInput():
                 incomingbytes = incomingbytes.translate({ord('S'): None})
                 incomingstate = int(incomingbytes)
                 if state != incomingstate:
-                    state = int(incomingstate)
+                    state = incomingstate
 
         if incomingbytes.find('F') != -1:
             incomingbytes = incomingbytes.translate({ord('F'): None})
-            sensorvalue = float(incomingbytes)
+            sensorvalue = int(incomingbytes)
             lastvalueID = soundEffect(lastvalueID, sensorvalue, state)
