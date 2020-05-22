@@ -14,10 +14,10 @@ def readInput():
         print(incomingbytes)
 
         if incomingbytes.find('S') != -1:
-                incomingbytes = incomingbytes.translate({ord('S'): None})
-                incomingstate = int(incomingbytes)
-                if state != incomingstate:
-                    state = incomingstate
+            incomingbytes = incomingbytes.translate({ord('S'): None})
+            incomingstate = int(incomingbytes)
+            if state != incomingstate:
+                state = incomingstate
 
         if incomingbytes.find('F') != -1:
             incomingbytes = incomingbytes.translate({ord('F'): None})
