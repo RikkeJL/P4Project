@@ -1,6 +1,7 @@
 import serial
 from UserInput.UseData import *
 
+
 def readInput():
     ser = serial.Serial('COM4', 9600)
     state = 0

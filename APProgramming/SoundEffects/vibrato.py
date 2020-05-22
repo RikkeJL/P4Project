@@ -8,8 +8,7 @@ def addVibrato(inputSignal, changeVal, sf, offset=1):
     outputSignal = np.zeros(nData)
     tmpSignal = np.zeros(nData)
     for n in np.arange(nData):
-        # calculate delay
-        delay = offset + (modDepth/2)*(1-np.cos(digModFreq*n))
+        delay = offset + (modDepth/2)*(1-np.cos(digModFreq*n))  # calculate delay
         # calculate filter output
         if n < delay:
             outputSignal[n] = 0
